@@ -1,0 +1,26 @@
+{
+  "name": "codeceptjs-example",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Stanislav Selivertov",
+  "license": "Apache 2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sseliverstov/codeceptjs-example.git"
+  },
+  "scripts": {
+    "clean": "rimraf allure-results **/*/_output **/*/_typings",
+
+    "test-build-in-allure-for-js": "codeceptjs run --config=./examples/js/build-in-allure/codecept.conf.js --plugins allure",
+
+    "test-build-in-allure-for-ts": "npm run bootstrap-build-in-allure-for-ts && TS_NODE_PROJECT='./examples/ts/build-in-allure/tsconfig.json' codeceptjs run --config=./examples/ts/build-in-allure/codecept.conf.js --plugins allure",
+    "bootstrap-build-in-allure-for-ts": "mkdir -p ./examples/ts/build-in-allure/_typings && TS_NODE_PROJECT='./examples/ts/build-in-allure/tsconfig.json' codeceptjs def --config=./examples/ts/build-in-allure/codecept.conf.js --output=./examples/ts/build-in-allure/_typings"
+  },
+  "devDependencies": {
+    "codeceptjs": "2.5.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  }
+}
