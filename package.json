@@ -11,11 +11,13 @@
   },
   "scripts": {
     "clean": "rimraf allure-results **/*/_output **/*/_typings",
-
-    "test-build-in-allure-for-js": "codeceptjs run --config=./examples/js/build-in-allure/codecept.conf.js --plugins allure",
-
-    "test-build-in-allure-for-ts": "npm run bootstrap-build-in-allure-for-ts && TS_NODE_PROJECT='./examples/ts/build-in-allure/tsconfig.json' codeceptjs run --config=./examples/ts/build-in-allure/codecept.conf.js --plugins allure",
-    "bootstrap-build-in-allure-for-ts": "mkdir -p ./examples/ts/build-in-allure/_typings && TS_NODE_PROJECT='./examples/ts/build-in-allure/tsconfig.json' codeceptjs def --config=./examples/ts/build-in-allure/codecept.conf.js --output=./examples/ts/build-in-allure/_typings"
+    "test": "npm run test-buildin-allure-for-js; npm run test-buildin-allure-for-ts",
+    "test-buildin-allure-for-js":
+      "codeceptjs run --config=./examples/js/buildin-allure/codecept.conf.js --plugins allure",
+    "test-buildin-allure-for-ts":
+      "npm run bootstrap-buildin-allure-for-ts && TS_NODE_PROJECT='examples/ts/buildin-allure/tsconfig.json' codeceptjs run --config=./examples/ts/buildin-allure/codecept.conf.js --plugins allure",
+    "bootstrap-buildin-allure-for-ts":
+      "mkdir -p examples/ts/buildin-allure/_typings && TS_NODE_PROJECT='examples/ts/buildin-allure/tsconfig.json' codeceptjs def --config=./examples/ts/buildin-allure/codecept.conf.js --output=./examples/ts/buildin-allure/_typings"
   },
   "devDependencies": {
     "codeceptjs": "2.5.0",
